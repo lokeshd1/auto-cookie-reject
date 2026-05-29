@@ -173,12 +173,7 @@
 /* ===========================================
    SOURCEPOINT
    =========================================== */
-/* Only hide the actual message iframe/container */
-[id^="sp_message_container_"],
-.sp_message_container,
-#sp-cc {
-  display: none !important;
-}
+/* Let JS handle Sourcepoint - CSS hiding breaks some sites */
 
 /* ===========================================
    TERMLY

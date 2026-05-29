@@ -108,18 +108,21 @@
       }
     },
 
-    // Sourcepoint
+    // Sourcepoint (used by The Guardian, etc.)
     sourcepoint: {
-      detect: () => document.querySelector('.sp-message-container, [id^="sp_message_container"]'),
+      detect: () => document.querySelector('[id^="sp_message_container"]'),
       reject: () => {
-        const rejectBtn = document.querySelector(
-          'button[title*="Reject"], ' +
-          'button[title*="Disagree"], ' +
-          'button[aria-label*="Reject"]'
-        );
-        if (rejectBtn) {
-          rejectBtn.click();
-          return true;
+        // Look for "No, thank you" or similar reject buttons
+        const buttons = document.querySelectorAll('button');
+        for (const btn of buttons) {
+          const text = btn.textContent.toLowerCase().trim();
+          if (text.includes('no, thank') ||
+              text.includes('reject') ||
+              text.includes('decline') ||
+              text.includes('do not accept')) {
+            btn.click();
+            return true;
+          }
         }
         return false;
       }
