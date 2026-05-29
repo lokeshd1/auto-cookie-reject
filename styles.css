@@ -173,31 +173,11 @@
 /* ===========================================
    SOURCEPOINT
    =========================================== */
-.sp-message-container,
-#sp-cc,
-[id^="sp_message_container"],
-iframe[id^="sp_message"],
-.message-overlay,
-div[data-sp-message],
-.sp_message_container {
+/* Only hide the actual message iframe/container */
+[id^="sp_message_container_"],
+.sp_message_container,
+#sp-cc {
   display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
-
-/* Fix Sourcepoint body class blocking content */
-body.sp-message-open {
-  overflow: auto !important;
-  position: static !important;
-  height: auto !important;
-}
-
-/* Ensure main content is visible when Sourcepoint is present */
-body.sp-message-open > *:not([id^="sp_message"]):not(.sp-message-container) {
-  display: revert !important;
-  visibility: visible !important;
-  opacity: 1 !important;
 }
 
 /* ===========================================
