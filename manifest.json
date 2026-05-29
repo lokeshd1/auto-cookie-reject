@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Auto Cookie Reject",
   "version": "1.0.0",
-  "description": "Automatically reject cookie consent popups and banners. Privacy-first, runs locally.",
+  "description": "Automatically reject cookie consent popups and banners. Privacy-first, runs 100% locally.",
   "permissions": [
     "storage",
     "activeTab"
@@ -21,6 +21,7 @@
   ],
   "action": {
     "default_popup": "popup.html",
+    "default_title": "Auto Cookie Reject",
     "default_icon": {
       "16": "icons/icon16.png",
       "48": "icons/icon48.png",
@@ -34,5 +35,7 @@
   },
   "background": {
     "service_worker": "background.js"
-  }
+  },
+  "homepage_url": "https://github.com/lokeshd1/auto-cookie-reject",
+  "offline_enabled": true
 }
