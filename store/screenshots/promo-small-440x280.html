@@ -25,72 +25,16 @@
     }
 
     .icon {
-      width: 70px;
-      height: 70px;
-      background: rgba(255,255,255,0.2);
-      border-radius: 16px;
+      width: 80px;
+      height: 80px;
       margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       position: relative;
     }
 
-    .cookie {
-      width: 40px;
-      height: 40px;
-      background: #f5d9a8;
-      border-radius: 50%;
-      position: relative;
-    }
-
-    .cookie::before {
-      content: '';
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      background: #8b5a2b;
-      border-radius: 50%;
-      top: 10px;
-      left: 8px;
-    }
-
-    .cookie::after {
-      content: '';
-      position: absolute;
-      width: 6px;
-      height: 6px;
-      background: #8b5a2b;
-      border-radius: 50%;
-      top: 22px;
-      left: 22px;
-    }
-
-    .x-mark {
-      position: absolute;
+    .icon img {
       width: 100%;
       height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .x-mark::before,
-    .x-mark::after {
-      content: '';
-      position: absolute;
-      width: 4px;
-      height: 30px;
-      background: #ff4757;
-      border-radius: 2px;
-    }
-
-    .x-mark::before {
-      transform: rotate(45deg);
-    }
-
-    .x-mark::after {
-      transform: rotate(-45deg);
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
     }
 
     .title {
@@ -109,8 +53,7 @@
 </head>
 <body>
   <div class="icon">
-    <div class="cookie"></div>
-    <div class="x-mark"></div>
+    <img src="../../icons/icon.svg" alt="Auto Cookie Reject">
   </div>
   <div class="title">Auto Cookie Reject</div>
   <div class="subtitle">Automatically reject cookie popups.<br>Privacy-first. 100% local.</div>
