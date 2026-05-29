@@ -291,6 +291,9 @@
     const html = document.documentElement;
     const body = document.body;
 
+    // Bail if DOM not ready
+    if (!html && !body) return;
+
     // Remove common scroll-blocking classes
     const blockingClasses = [
       'cookie-consent-open', 'modal-open', 'no-scroll',
@@ -298,15 +301,15 @@
     ];
 
     blockingClasses.forEach(cls => {
-      html.classList.remove(cls);
-      body.classList.remove(cls);
+      if (html) html.classList.remove(cls);
+      if (body) body.classList.remove(cls);
     });
 
     // Reset overflow styles
-    if (html.style.overflow === 'hidden') html.style.overflow = '';
-    if (body.style.overflow === 'hidden') body.style.overflow = '';
-    if (html.style.position === 'fixed') html.style.position = '';
-    if (body.style.position === 'fixed') body.style.position = '';
+    if (html && html.style.overflow === 'hidden') html.style.overflow = '';
+    if (body && body.style.overflow === 'hidden') body.style.overflow = '';
+    if (html && html.style.position === 'fixed') html.style.position = '';
+    if (body && body.style.position === 'fixed') body.style.position = '';
   }
 
   // Main handler - detect and reject
