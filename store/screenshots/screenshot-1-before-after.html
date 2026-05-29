@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Screenshot 1 - Before/After</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #1a1a2e;
+      width: 1280px;
+      height: 800px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      padding: 40px;
+    }
+
+    .comparison {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .browser-window {
+      width: 540px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      overflow: hidden;
+    }
+
+    .browser-header {
+      background: #e8e8e8;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .browser-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .dot.red { background: #ff5f57; }
+    .dot.yellow { background: #ffbd2e; }
+    .dot.green { background: #28ca41; }
+
+    .browser-url {
+      flex: 1;
+      background: #fff;
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 12px;
+      color: #666;
+      margin-left: 12px;
+    }
+
+    .browser-content {
+      height: 380px;
+      background: #f5f5f5;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Fake website content */
+    .fake-site {
+      padding: 20px;
+    }
+
+    .fake-nav {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .fake-nav span {
+      color: #333;
+      font-size: 14px;
+    }
+
+    .fake-headline {
+      font-size: 24px;
+      font-weight: bold;
+      color: #222;
+      margin-bottom: 15px;
+    }
+
+    .fake-text {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .fake-image {
+      width: 100%;
+      height: 120px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    /* Cookie banner overlay */
+    .cookie-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 20px;
+    }
+
+    .cookie-banner {
+      background: #fff;
+      padding: 20px 24px;
+      border-radius: 12px;
+      width: 90%;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    }
+
+    .cookie-banner h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .cookie-banner p {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+
+    .cookie-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .cookie-btn {
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+    }
+
+    .cookie-btn.accept {
+      background: #4CAF50;
+      color: white;
+    }
+
+    .cookie-btn.reject {
+      background: #e0e0e0;
+      color: #333;
+    }
+
+    .cookie-btn.settings {
+      background: transparent;
+      color: #666;
+      border: 1px solid #ddd;
+    }
+
+    /* Labels */
+    .label {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .label-text {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .label-sub {
+      font-size: 14px;
+      color: #888;
+      margin-top: 5px;
+    }
+
+    /* Arrow */
+    .arrow {
+      font-size: 60px;
+      color: #667eea;
+    }
+
+    /* Checkmark */
+    .checkmark {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .checkmark svg {
+      width: 28px;
+      height: 28px;
+      fill: none;
+      stroke: white;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  </style>
+</head>
+<body>
+  <div class="comparison">
+    <!-- BEFORE -->
+    <div>
+      <div class="browser-window">
+        <div class="browser-header">
+          <div class="browser-dots">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+          </div>
+          <div class="browser-url">example-news.com/article</div>
+        </div>
+        <div class="browser-content">
+          <div class="fake-site">
+            <div class="fake-nav">
+              <span>Home</span>
+              <span>News</span>
+              <span>Sports</span>
+              <span>Tech</span>
+            </div>
+            <div class="fake-headline">Breaking: New Technology...</div>
+            <div class="fake-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</div>
+            <div class="fake-text">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</div>
+            <div class="fake-image"></div>
+          </div>
+
+          <!-- Cookie overlay -->
+          <div class="cookie-overlay">
+            <div class="cookie-banner">
+              <h3>We value your privacy</h3>
+              <p>We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.</p>
+              <div class="cookie-buttons">
+                <button class="cookie-btn accept">Accept All</button>
+                <button class="cookie-btn reject">Reject All</button>
+                <button class="cookie-btn settings">Settings</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="label">
+        <div class="label-text" style="color: #ff6b6b;">BEFORE</div>
+        <div class="label-sub">Annoying popup blocks content</div>
+      </div>
+    </div>
+
+    <!-- Arrow -->
+    <div class="arrow">→</div>
+
+    <!-- AFTER -->
+    <div>
+      <div class="browser-window">
+        <div class="browser-header">
+          <div class="browser-dots">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+          </div>
+          <div class="browser-url">example-news.com/article</div>
+        </div>
+        <div class="browser-content">
+          <div class="fake-site">
+            <div class="fake-nav">
+              <span>Home</span>
+              <span>News</span>
+              <span>Sports</span>
+              <span>Tech</span>
+            </div>
+            <div class="fake-headline">Breaking: New Technology...</div>
+            <div class="fake-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</div>
+            <div class="fake-text">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</div>
+            <div class="fake-image"></div>
+          </div>
+
+          <!-- Checkmark -->
+          <div class="checkmark">
+            <svg viewBox="0 0 24 24">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="label">
+        <div class="label-text" style="color: #4CAF50;">AFTER</div>
+        <div class="label-sub">Clean browsing, cookies rejected</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

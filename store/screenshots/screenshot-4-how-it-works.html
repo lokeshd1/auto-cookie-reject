@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Screenshot 4 - How It Works</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      width: 1280px;
+      height: 800px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px;
+    }
+
+    .headline {
+      font-size: 42px;
+      font-weight: 800;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .headline span {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subheadline {
+      font-size: 18px;
+      color: #888;
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .steps {
+      display: flex;
+      align-items: flex-start;
+      gap: 30px;
+      width: 100%;
+      max-width: 1100px;
+    }
+
+    .step {
+      flex: 1;
+      text-align: center;
+    }
+
+    .step-icon {
+      width: 100px;
+      height: 100px;
+      background: rgba(102, 126, 234, 0.1);
+      border: 2px solid rgba(102, 126, 234, 0.3);
+      border-radius: 24px;
+      margin: 0 auto 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .step-icon svg {
+      width: 48px;
+      height: 48px;
+      stroke: #667eea;
+      stroke-width: 1.5;
+      fill: none;
+    }
+
+    .step-number {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: white;
+    }
+
+    .step-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .step-description {
+      font-size: 14px;
+      color: #888;
+      line-height: 1.6;
+      max-width: 220px;
+      margin: 0 auto;
+    }
+
+    .arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 40px;
+    }
+
+    .arrow svg {
+      width: 40px;
+      height: 40px;
+      stroke: rgba(102, 126, 234, 0.4);
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .time-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(76, 175, 80, 0.2);
+      color: #4CAF50;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-top: 50px;
+    }
+
+    .time-badge svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="headline">How it <span>works</span></h1>
+  <p class="subheadline">Three simple steps, all happening automatically in milliseconds</p>
+
+  <div class="steps">
+    <!-- Step 1 -->
+    <div class="step">
+      <div class="step-icon">
+        <div class="step-number">1</div>
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 6v6l4 2"></path>
+        </svg>
+      </div>
+      <div class="step-title">Instant Hide</div>
+      <div class="step-description">CSS rules immediately hide cookie banners before they even render on screen</div>
+    </div>
+
+    <div class="arrow">
+      <svg viewBox="0 0 24 24">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step">
+      <div class="step-icon">
+        <div class="step-number">2</div>
+        <svg viewBox="0 0 24 24">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+      </div>
+      <div class="step-title">Detect Platform</div>
+      <div class="step-description">JavaScript identifies which consent platform (OneTrust, Cookiebot, etc.) is being used</div>
+    </div>
+
+    <div class="arrow">
+      <svg viewBox="0 0 24 24">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step">
+      <div class="step-icon">
+        <div class="step-number">3</div>
+        <svg viewBox="0 0 24 24">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+      </div>
+      <div class="step-title">Auto Reject</div>
+      <div class="step-description">Automatically clicks "Reject All" or "Only Necessary" to protect your privacy</div>
+    </div>
+  </div>
+
+  <div class="time-badge">
+    <svg viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10"></circle>
+      <polyline points="12 6 12 12 16 14"></polyline>
+    </svg>
+    All done in under 500ms
+  </div>
+</body>
+</html>

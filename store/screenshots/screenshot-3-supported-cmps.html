@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Screenshot 3 - Supported Platforms</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      width: 1280px;
+      height: 800px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px;
+    }
+
+    .headline {
+      font-size: 42px;
+      font-weight: 800;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .headline span {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subheadline {
+      font-size: 18px;
+      color: #888;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .cmp-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .cmp-card:hover {
+      background: rgba(255,255,255,0.08);
+      transform: translateY(-2px);
+    }
+
+    .cmp-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 12px;
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 700;
+      color: white;
+    }
+
+    .cmp-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .cmp-sites {
+      font-size: 11px;
+      color: #666;
+    }
+
+    .check-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(76, 175, 80, 0.2);
+      color: #4CAF50;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    .check-badge svg {
+      width: 12px;
+      height: 12px;
+      stroke: currentColor;
+      stroke-width: 3;
+      fill: none;
+    }
+
+    .plus-more {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(102, 126, 234, 0.1);
+      border: 2px dashed rgba(102, 126, 234, 0.3);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .plus-more-text {
+      font-size: 16px;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .footer-note {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #666;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="headline">Works with <span>11+ platforms</span></h1>
+  <p class="subheadline">Automatically handles consent popups from all major cookie management platforms</p>
+
+  <div class="grid">
+    <div class="cmp-card">
+      <div class="cmp-icon">OT</div>
+      <div class="cmp-name">OneTrust</div>
+      <div class="cmp-sites">BBC, Salesforce, ESPN</div>
+      <div class="check-badge">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        Supported
+      </div>
+    </div>
+
+    <div class="cmp-card">
+      <div class="cmp-icon">CB</div>
+      <div class="cmp-name">Cookiebot</div>
+      <div class="cmp-sites">10K+ websites</div>
+      <div class="check-badge">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        Supported
+      </div>
+    </div>
+
+    <div class="cmp-card">
+      <div class="cmp-icon">TA</div>
+      <div class="cmp-name">TrustArc</div>
+      <div class="cmp-sites">Enterprise sites</div>
+      <div class="check-badge">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        Supported
+      </div>
+    </div>
+
+    <div class="cmp-card">
+      <div class="cmp-icon">QC</div>
+      <div class="cmp-name">Quantcast</div>
+      <div class="cmp-sites">Media sites</div>
+      <div class="check-badge">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        Supported
+      </div>
+    </div>
+
+    <div class="cmp-card">
+      <div class="cmp-icon">DI</div>
+      <div class="cmp-name">Didomi</div>
+      <div class="cmp-sites">EU publishers</div>
+      <div class="check-badge">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        Supported
+      </div>
+    </div>
+
+    <div class="cmp-card">
+      <div class="cmp-icon">UC</div>
+      <div class="cmp-name">Usercentrics</div>
+      <div class="cmp-sites">German sites</div>
+      <div class="check-badge">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        Supported
+      </div>
+    </div>
+
+    <div class="cmp-card">
+      <div class="cmp-icon">IU</div>
+      <div class="cmp-name">Iubenda</div>
+      <div class="cmp-sites">SMB sites</div>
+      <div class="check-badge">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        Supported
+      </div>
+    </div>
+
+    <div class="cmp-card plus-more">
+      <div class="plus-more-text">+ 4 more platforms<br>& generic banners</div>
+    </div>
+  </div>
+
+  <p class="footer-note">New platforms added regularly based on user feedback</p>
+</body>
+</html>

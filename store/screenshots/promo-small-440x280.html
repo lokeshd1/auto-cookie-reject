@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promo Small Tile 440x280</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      width: 440px;
+      height: 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .icon {
+      width: 70px;
+      height: 70px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 16px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .cookie {
+      width: 40px;
+      height: 40px;
+      background: #f5d9a8;
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .cookie::before {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: #8b5a2b;
+      border-radius: 50%;
+      top: 10px;
+      left: 8px;
+    }
+
+    .cookie::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: #8b5a2b;
+      border-radius: 50%;
+      top: 22px;
+      left: 22px;
+    }
+
+    .x-mark {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .x-mark::before,
+    .x-mark::after {
+      content: '';
+      position: absolute;
+      width: 4px;
+      height: 30px;
+      background: #ff4757;
+      border-radius: 2px;
+    }
+
+    .x-mark::before {
+      transform: rotate(45deg);
+    }
+
+    .x-mark::after {
+      transform: rotate(-45deg);
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <div class="icon">
+    <div class="cookie"></div>
+    <div class="x-mark"></div>
+  </div>
+  <div class="title">Auto Cookie Reject</div>
+  <div class="subtitle">Automatically reject cookie popups.<br>Privacy-first. 100% local.</div>
+</body>
+</html>

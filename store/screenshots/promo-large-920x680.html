@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promo Large Tile 920x680</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      width: 920px;
+      height: 680px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px;
+      gap: 60px;
+    }
+
+    .left {
+      flex: 1;
+    }
+
+    .icon {
+      width: 80px;
+      height: 80px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 20px;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .cookie {
+      width: 45px;
+      height: 45px;
+      background: #f5d9a8;
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .cookie::before {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #8b5a2b;
+      border-radius: 50%;
+      top: 12px;
+      left: 10px;
+    }
+
+    .cookie::after {
+      content: '';
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      background: #8b5a2b;
+      border-radius: 50%;
+      top: 25px;
+      left: 26px;
+    }
+
+    .x-mark {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .x-mark::before,
+    .x-mark::after {
+      content: '';
+      position: absolute;
+      width: 5px;
+      height: 35px;
+      background: #ff4757;
+      border-radius: 2px;
+    }
+
+    .x-mark::before {
+      transform: rotate(45deg);
+    }
+
+    .x-mark::after {
+      transform: rotate(-45deg);
+    }
+
+    .title {
+      font-size: 42px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.5;
+      margin-bottom: 30px;
+    }
+
+    .features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: rgba(255,255,255,0.95);
+      font-size: 16px;
+    }
+
+    .feature-check {
+      width: 24px;
+      height: 24px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .feature-check svg {
+      width: 14px;
+      height: 14px;
+      stroke: white;
+      stroke-width: 3;
+      fill: none;
+    }
+
+    .right {
+      width: 320px;
+      flex-shrink: 0;
+    }
+
+    /* Mini popup preview */
+    .popup-preview {
+      background: #1a1a2e;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    .popup-preview-header {
+      text-align: center;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 16px;
+    }
+
+    .popup-preview-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: #888;
+    }
+
+    .stat-value {
+      font-size: 24px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .status-badge {
+      background: rgba(76, 175, 80, 0.2);
+      color: #4CAF50;
+      text-align: center;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="left">
+    <div class="icon">
+      <div class="cookie"></div>
+      <div class="x-mark"></div>
+    </div>
+    <div class="title">Auto Cookie<br>Reject</div>
+    <div class="subtitle">Automatically reject cookie consent popups<br>and browse in peace.</div>
+
+    <div class="features">
+      <div class="feature">
+        <div class="feature-check">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <span>Works on 11+ consent platforms</span>
+      </div>
+      <div class="feature">
+        <div class="feature-check">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <span>100% local - no data collected</span>
+      </div>
+      <div class="feature">
+        <div class="feature-check">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <span>Open source & auditable</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="popup-preview">
+      <div class="popup-preview-header">
+        <div class="popup-preview-title">Protection Stats</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-label">Banners blocked today</div>
+        <div class="stat-value">23</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-label">Total banners blocked</div>
+        <div class="stat-value">1,847</div>
+      </div>
+      <div class="status-badge">Protection Active</div>
+    </div>
+  </div>
+</body>
+</html>

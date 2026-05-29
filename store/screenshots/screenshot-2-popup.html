@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Screenshot 2 - Extension Popup</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      width: 1280px;
+      height: 800px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 80px;
+    }
+
+    .left-content {
+      max-width: 500px;
+    }
+
+    .headline {
+      font-size: 48px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .headline span {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subheadline {
+      font-size: 20px;
+      color: #888;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .features {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #ccc;
+      font-size: 16px;
+    }
+
+    .feature-icon {
+      width: 24px;
+      height: 24px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .feature-icon svg {
+      width: 14px;
+      height: 14px;
+      stroke: white;
+      stroke-width: 3;
+      fill: none;
+    }
+
+    /* Popup mockup */
+    .popup-container {
+      position: relative;
+    }
+
+    .popup {
+      width: 320px;
+      background: #1a1a2e;
+      border-radius: 16px;
+      box-shadow: 0 25px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.1);
+      overflow: hidden;
+    }
+
+    .popup-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .popup-header h1 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .popup-header p {
+      font-size: 12px;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .popup-content {
+      padding: 20px;
+    }
+
+    .domain-info {
+      font-size: 13px;
+      color: #888;
+      text-align: center;
+      padding: 10px;
+      background: #16213e;
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px;
+      background: #16213e;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+
+    .toggle-label {
+      font-size: 14px;
+      color: #eee;
+    }
+
+    .toggle-sublabel {
+      font-size: 11px;
+      color: #666;
+      margin-top: 2px;
+    }
+
+    .toggle {
+      width: 48px;
+      height: 26px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 26px;
+      position: relative;
+    }
+
+    .toggle::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      top: 3px;
+      right: 3px;
+    }
+
+    .stats {
+      background: #16213e;
+      border-radius: 8px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+
+    .stats-title {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .stats-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .stats-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .stats-label {
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    .stats-value {
+      font-size: 14px;
+      font-weight: 600;
+      color: #667eea;
+    }
+
+    .status {
+      text-align: center;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      background: rgba(102, 126, 234, 0.2);
+      color: #667eea;
+    }
+
+    /* Decorative elements */
+    .glow {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(102, 126, 234, 0.3) 0%, transparent 70%);
+      top: -100px;
+      right: -100px;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="left-content">
+    <h1 class="headline">Take control of your <span>privacy</span></h1>
+    <p class="subheadline">Auto Cookie Reject handles annoying consent popups so you can focus on what matters.</p>
+
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <span>Auto-rejects cookies on 11+ platforms</span>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <span>100% local - no data collected</span>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <span>Per-site enable/disable control</span>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <span>Open source and auditable</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="popup-container">
+    <div class="glow"></div>
+    <div class="popup">
+      <div class="popup-header">
+        <h1>Auto Cookie Reject</h1>
+        <p>Privacy-first cookie consent blocker</p>
+      </div>
+
+      <div class="popup-content">
+        <div class="domain-info">bbc.com</div>
+
+        <div class="toggle-row">
+          <div>
+            <div class="toggle-label">Enabled globally</div>
+            <div class="toggle-sublabel">Auto-reject on all sites</div>
+          </div>
+          <div class="toggle"></div>
+        </div>
+
+        <div class="toggle-row">
+          <div>
+            <div class="toggle-label">Enabled on this site</div>
+            <div class="toggle-sublabel">Toggle for current domain</div>
+          </div>
+          <div class="toggle"></div>
+        </div>
+
+        <div class="stats">
+          <div class="stats-title">Statistics</div>
+          <div class="stats-row">
+            <span class="stats-label">Banners blocked today</span>
+            <span class="stats-value">23</span>
+          </div>
+          <div class="stats-row">
+            <span class="stats-label">Total banners blocked</span>
+            <span class="stats-value">1,847</span>
+          </div>
+        </div>
+
+        <div class="status">Protection Active</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
