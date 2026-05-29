@@ -174,13 +174,21 @@
    SOURCEPOINT
    =========================================== */
 .sp-message-container,
-.sp-message-open,
 #sp-cc,
-[id^="sp_message_container"] {
+[id^="sp_message_container"],
+div[class*="sp_message"],
+div[id*="sp_message"],
+iframe[id^="sp_message"] {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
   pointer-events: none !important;
+}
+
+/* Fix Sourcepoint body class blocking scroll */
+body.sp-message-open {
+  overflow: auto !important;
+  position: static !important;
 }
 
 /* ===========================================
