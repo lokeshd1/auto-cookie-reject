@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Background circle -->
+  <circle cx="64" cy="64" r="60" fill="url(#grad)"/>
+  <!-- Cookie shape -->
+  <circle cx="64" cy="64" r="40" fill="#f5d9a8"/>
+  <circle cx="50" cy="55" r="6" fill="#8b5a2b"/>
+  <circle cx="75" cy="50" r="5" fill="#8b5a2b"/>
+  <circle cx="60" cy="75" r="6" fill="#8b5a2b"/>
+  <circle cx="80" cy="70" r="4" fill="#8b5a2b"/>
+  <!-- X mark (reject) -->
+  <g stroke="#ff4757" stroke-width="8" stroke-linecap="round">
+    <line x1="45" y1="45" x2="83" y2="83"/>
+    <line x1="83" y1="45" x2="45" y2="83"/>
+  </g>
+</svg>

@@ -1,0 +1,295 @@
+/*
+ * Auto Cookie Reject - CSS Rules
+ * These rules hide cookie consent banners immediately while JS handles rejection
+ */
+
+/* ===========================================
+   GENERIC COOKIE BANNER SELECTORS
+   =========================================== */
+
+/* Common IDs */
+#cookie-banner,
+#cookie-consent,
+#cookie-notice,
+#cookie-law,
+#cookie-popup,
+#cookie-modal,
+#cookie-bar,
+#cookie-warning,
+#cookie-alert,
+#cookie-message,
+#cookie-info,
+#cookie-policy,
+#cookie-disclaimer,
+#cookieBanner,
+#cookieConsent,
+#cookieNotice,
+#cookiePopup,
+#cookieModal,
+#cookieBar,
+#cookieWarning,
+#cookieAlert,
+#CookieBanner,
+#CookieConsent,
+#CookieNotice,
+#gdpr-banner,
+#gdpr-consent,
+#gdpr-popup,
+#gdpr-notice,
+#gdpr-modal,
+#GDPR,
+#privacy-banner,
+#privacy-notice,
+#privacy-popup,
+#consent-banner,
+#consent-popup,
+#consent-modal,
+#consent-notice {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Common Classes */
+.cookie-banner,
+.cookie-consent,
+.cookie-notice,
+.cookie-popup,
+.cookie-modal,
+.cookie-bar,
+.cookie-warning,
+.cookie-overlay,
+.cookie-container,
+.cookieBanner,
+.cookieConsent,
+.cookieNotice,
+.cookiePopup,
+.cookieModal,
+.cookieBar,
+.gdpr-banner,
+.gdpr-consent,
+.gdpr-popup,
+.gdpr-notice,
+.gdpr-modal,
+.gdpr-overlay,
+.privacy-banner,
+.privacy-notice,
+.privacy-popup,
+.consent-banner,
+.consent-popup,
+.consent-modal,
+.consent-notice,
+.consent-overlay,
+.cc-window,
+.cc-banner,
+.cc-overlay,
+.cc-revoke {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* ===========================================
+   ONETRUST (Most Popular CMP)
+   =========================================== */
+#onetrust-consent-sdk,
+#onetrust-banner-sdk,
+#onetrust-pc-sdk,
+.onetrust-pc-dark-filter,
+.ot-sdk-container,
+.ot-sdk-overlay,
+#ot-sdk-btn-floating {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* ===========================================
+   COOKIEBOT
+   =========================================== */
+#CybotCookiebotDialog,
+#CybotCookiebotDialogBodyUnderlay,
+.CybotCookiebotDialogActive,
+#Cookiebot,
+.cookiebot-modal,
+#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowallSelection {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* ===========================================
+   TRUSTARC
+   =========================================== */
+#truste-consent-track,
+#truste-consent-content,
+#trustarc-banner-overlay,
+.truste_overlay,
+.truste_box_overlay,
+.truste-consent-track,
+#consent_blackbar,
+.trustarc-banner {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* ===========================================
+   QUANTCAST
+   =========================================== */
+#qc-cmp2-container,
+#qc-cmp2-main,
+.qc-cmp2-container,
+.qc-cmp-ui-container,
+.qc-cmp-showing,
+#quantcast-choice-popup {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* ===========================================
+   DIDOMI
+   =========================================== */
+#didomi-host,
+#didomi-popup,
+.didomi-popup-container,
+.didomi-consent-popup-backdrop,
+.didomi-popup-backdrop,
+.didomi-notice,
+.didomi-notice-banner {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* ===========================================
+   SOURCEPOINT
+   =========================================== */
+.sp-message-container,
+.sp-message-open,
+#sp-cc,
+[id^="sp_message_container"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* ===========================================
+   TERMLY
+   =========================================== */
+#termly-code-snippet-support,
+.termly-display-banner,
+.t-banner,
+[class*="termly"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* ===========================================
+   OSANO
+   =========================================== */
+.osano-cm-window,
+.osano-cm-dialog,
+.osano-cm-overlay,
+#osano-cm-window {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* ===========================================
+   USERCENTRICS
+   =========================================== */
+#usercentrics-root,
+.uc-banner,
+.uc-embedding-wrapper,
+[data-testid="uc-banner"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* ===========================================
+   COMPLIANZ (WordPress)
+   =========================================== */
+#cmplz-cookiebanner-container,
+.cmplz-cookiebanner,
+.cmplz-blocked-content-notice,
+#cmplz-manage-consent {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* ===========================================
+   IUBENDA
+   =========================================== */
+#iubenda-cs-banner,
+.iubenda-cs-container,
+.iubenda-cs-overlay,
+.iub-cmp-box {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* ===========================================
+   KLARO
+   =========================================== */
+.klaro,
+.klaro .cookie-modal,
+.klaro .cookie-notice,
+#klaro {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* ===========================================
+   OVERLAY / BACKDROP FIXES
+   =========================================== */
+
+/* Prevent scroll blocking when banner is hidden */
+html.cookie-consent-open,
+body.cookie-consent-open,
+html.modal-open,
+body.modal-open,
+html.no-scroll,
+body.no-scroll,
+html.overflow-hidden,
+body.overflow-hidden,
+html.gdpr-shown,
+body.gdpr-shown {
+  overflow: auto !important;
+  position: static !important;
+}
+
+/* Generic overlay patterns */
+.cookie-overlay,
+.consent-overlay,
+.gdpr-overlay,
+.privacy-overlay,
+[class*="cookie-overlay"],
+[class*="consent-overlay"],
+[class*="gdpr-overlay"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
