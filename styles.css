@@ -176,19 +176,28 @@
 .sp-message-container,
 #sp-cc,
 [id^="sp_message_container"],
-div[class*="sp_message"],
-div[id*="sp_message"],
-iframe[id^="sp_message"] {
+iframe[id^="sp_message"],
+.message-overlay,
+div[data-sp-message],
+.sp_message_container {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
   pointer-events: none !important;
 }
 
-/* Fix Sourcepoint body class blocking scroll */
+/* Fix Sourcepoint body class blocking content */
 body.sp-message-open {
   overflow: auto !important;
   position: static !important;
+  height: auto !important;
+}
+
+/* Ensure main content is visible when Sourcepoint is present */
+body.sp-message-open > *:not([id^="sp_message"]):not(.sp-message-container) {
+  display: revert !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 /* ===========================================
@@ -196,8 +205,9 @@ body.sp-message-open {
    =========================================== */
 #termly-code-snippet-support,
 .termly-display-banner,
-.t-banner,
-[class*="termly"] {
+.termly-consent-banner,
+.termly-styles,
+.t-banner {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
