@@ -341,6 +341,14 @@
 
   // Set up MutationObserver for dynamically loaded banners
   function setupObserver() {
+    // Wait for document.documentElement to be available
+    const target = document.documentElement || document.body;
+    if (!target) {
+      // Retry after a short delay if DOM not ready
+      setTimeout(setupObserver, 10);
+      return;
+    }
+
     const observer = new MutationObserver((mutations) => {
       let shouldCheck = false;
 
@@ -358,7 +366,7 @@
       }
     });
 
-    observer.observe(document.documentElement, {
+    observer.observe(target, {
       childList: true,
       subtree: true
     });
