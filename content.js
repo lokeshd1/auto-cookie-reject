@@ -109,43 +109,54 @@
     },
 
     // Sourcepoint (used by The Guardian, etc.)
-    // Script runs in iframes too (all_frames: true), so detect if we're inside SP iframe
     sourcepoint: {
       detect: () => {
-        // Check if we're in main doc with SP container OR inside SP iframe
-        const inMainDoc = document.querySelector('[id^="sp_message_container"]');
-        const inIframe = window.self !== window.top &&
-                        document.querySelector('button[title="No, thank you"], button[title="Reject"]');
-        return inMainDoc || inIframe;
+        // In main doc: check for SP container
+        if (document.querySelector('[id^="sp_message_container"]')) {
+          return true;
+        }
+        // In iframe: check if we're in an iframe AND have consent buttons
+        if (window.self !== window.top) {
+          const hasConsentUI = document.querySelector('[class*="message-component"], [class*="privacy-manager"]') ||
+                              document.body?.textContent?.includes('Yes, I accept');
+          if (hasConsentUI) {
+            console.log('[Auto Cookie Reject] Inside Sourcepoint iframe');
+            return true;
+          }
+        }
+        return false;
       },
       reject: () => {
-        // Find reject button by title or text content
+        // Find reject button by various methods
         const rejectSelectors = [
           'button[title="No, thank you"]',
           'button[title="Reject"]',
+          'button[title="Reject all"]',
           'button[title="Decline"]',
-          'button[title="Do not consent"]'
+          'button[aria-label*="reject" i]',
+          'button[aria-label*="decline" i]'
         ];
 
         for (const selector of rejectSelectors) {
           const btn = document.querySelector(selector);
-          if (btn) {
+          if (btn && isVisible(btn)) {
             btn.click();
-            console.log('[Auto Cookie Reject] Clicked Sourcepoint reject button');
+            console.log('[Auto Cookie Reject] Clicked Sourcepoint button via selector');
             return true;
           }
         }
 
-        // Fallback: search by text content
+        // Search all buttons by text content
         const buttons = document.querySelectorAll('button');
         for (const btn of buttons) {
           const text = btn.textContent.toLowerCase().trim();
-          if (text === 'no, thank you' ||
-              text === 'reject' ||
-              text === 'reject all' ||
-              text === 'decline') {
+          if ((text.includes('no, thank') ||
+               text.includes('reject') ||
+               text.includes('decline') ||
+               text.includes('do not accept')) &&
+              isVisible(btn)) {
             btn.click();
-            console.log('[Auto Cookie Reject] Clicked reject button by text');
+            console.log('[Auto Cookie Reject] Clicked Sourcepoint button via text:', text);
             return true;
           }
         }
