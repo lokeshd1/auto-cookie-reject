@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marquee Promo Tile 1400x560</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      width: 1400px;
+      height: 560px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 80px;
+      gap: 80px;
+    }
+
+    .left {
+      flex: 1;
+    }
+
+    .icon {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 24px;
+    }
+
+    .icon img {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 6px 16px rgba(0,0,0,0.3));
+    }
+
+    .title {
+      font-size: 52px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+
+    .subtitle {
+      font-size: 22px;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.5;
+      margin-bottom: 32px;
+      max-width: 500px;
+    }
+
+    .features {
+      display: flex;
+      gap: 32px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,0.95);
+      font-size: 16px;
+    }
+
+    .feature-check {
+      width: 24px;
+      height: 24px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .feature-check svg {
+      width: 14px;
+      height: 14px;
+      stroke: white;
+      stroke-width: 3;
+      fill: none;
+    }
+
+    .right {
+      width: 420px;
+      flex-shrink: 0;
+    }
+
+    /* Browser mockup */
+    .browser {
+      background: #1a1a2e;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 25px 80px rgba(0,0,0,0.4);
+    }
+
+    .browser-header {
+      background: #252542;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .browser-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .dot.red { background: #ff5f57; }
+    .dot.yellow { background: #ffbd2e; }
+    .dot.green { background: #28ca41; }
+
+    .browser-content {
+      padding: 24px;
+      text-align: center;
+    }
+
+    .blocked-banner {
+      background: rgba(102, 126, 234, 0.15);
+      border: 2px dashed rgba(102, 126, 234, 0.4);
+      border-radius: 8px;
+      padding: 24px;
+    }
+
+    .blocked-text {
+      color: #667eea;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .blocked-icon {
+      font-size: 40px;
+      margin-bottom: 12px;
+    }
+
+    .status-badge {
+      background: rgba(76, 175, 80, 0.2);
+      color: #4CAF50;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-top: 16px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="left">
+    <div class="icon">
+      <img src="../../icons/icon128.png" alt="Auto Cookie Reject">
+    </div>
+    <div class="title">Auto Cookie Reject</div>
+    <div class="subtitle">Automatically reject cookie consent popups and browse the web in peace.</div>
+
+    <div class="features">
+      <div class="feature">
+        <div class="feature-check">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <span>11+ platforms</span>
+      </div>
+      <div class="feature">
+        <div class="feature-check">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <span>100% local</span>
+      </div>
+      <div class="feature">
+        <div class="feature-check">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <span>Open source</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="browser">
+      <div class="browser-header">
+        <div class="browser-dots">
+          <div class="dot red"></div>
+          <div class="dot yellow"></div>
+          <div class="dot green"></div>
+        </div>
+      </div>
+      <div class="browser-content">
+        <div class="blocked-banner">
+          <div class="blocked-icon">🚫🍪</div>
+          <div class="blocked-text">Cookie banner blocked!</div>
+        </div>
+        <div class="status-badge">Protection Active</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
