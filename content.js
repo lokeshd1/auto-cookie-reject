@@ -325,21 +325,21 @@
         }
 
         // Try matching by button text - expanded list
-        const buttons = document.querySelectorAll('button, a.button, a.btn, [role="button"], input[type="button"], input[type="submit"]');
+        // Include plain <a> tags since many consent UIs use links for reject
+        const buttons = document.querySelectorAll('button, a, [role="button"], input[type="button"], input[type="submit"], span[onclick], div[onclick]');
         const rejectTexts = [
           'reject all', 'reject non-essential', 'reject cookies', 'reject',
           'decline all', 'decline', 'deny all', 'deny', 'refuse',
           'only necessary', 'necessary only', 'essential only', 'necessary cookies only',
           'no thanks', 'no, thanks', 'not now', 'maybe later',
           'nur notwendige', 'ablehnen', 'alle ablehnen',
-          'refuser', 'tout refuser',
+          'refuser', 'tout refuser', 'continuer sans accepter',
           'rechazar', 'rechazar todo'
         ];
 
         for (const btn of buttons) {
           const text = btn.textContent.toLowerCase().trim();
           if (rejectTexts.some(t => text.includes(t)) && isVisible(btn)) {
-            console.log('[Auto Cookie Reject] Clicking generic button via text:', text);
             btn.click();
             return true;
           }
@@ -474,6 +474,7 @@
           }
           window.addEventListener('load', () => {
             setTimeout(handleCookieConsent, 500);
+            setTimeout(handleCookieConsent, 1500); // Extra check for slow-loading banners
           });
         }
       });
