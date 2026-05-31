@@ -254,13 +254,43 @@
           '[class*="cookie-banner"]',
           '[class*="cookie-consent"]',
           '[class*="cookie-notice"]',
+          '[class*="cookie-panel"]',
+          '[class*="cookie-popup"]',
+          '[class*="cookie-modal"]',
+          '[class*="cookie-dialog"]',
+          '[class*="cookie-warning"]',
+          '[class*="cookie-message"]',
           '[id*="cookie-banner"]',
           '[id*="cookie-consent"]',
+          '[id*="cookie-notice"]',
+          '[id*="cookie-panel"]',
           '[id*="gdpr"]',
+          '[id*="privacy-notice"]',
           '[class*="consent-banner"]',
-          '[class*="privacy-banner"]'
+          '[class*="consent-modal"]',
+          '[class*="privacy-banner"]',
+          '[class*="privacy-notice"]',
+          '[aria-label*="cookie"]',
+          '[aria-label*="consent"]',
+          '[role="dialog"][aria-modal="true"]'
         ];
-        return document.querySelector(genericSelectors.join(', '));
+        const found = document.querySelector(genericSelectors.join(', '));
+        if (found) return found;
+
+        // Check for any element containing cookie consent text
+        const allText = document.body?.innerText?.toLowerCase() || '';
+        if (allText.includes('cookie') &&
+            (allText.includes('accept') || allText.includes('reject') || allText.includes('consent'))) {
+          // Look for visible buttons with reject text
+          const buttons = document.querySelectorAll('button, a.button, a.btn, [role="button"]');
+          for (const btn of buttons) {
+            const text = btn.textContent.toLowerCase();
+            if (text.includes('reject') && isVisible(btn)) {
+              return btn.closest('div, section, aside, [role="dialog"]') || btn;
+            }
+          }
+        }
+        return null;
       },
       reject: () => {
         // Try common reject button patterns
@@ -279,32 +309,37 @@
           'button[class*="necessary"]',
           'button[class*="essential"]',
           // Aria labels
-          'button[aria-label*="Reject"]',
-          'button[aria-label*="Decline"]',
-          'button[aria-label*="Deny"]',
-          'button[aria-label*="necessary only"]',
-          // Text content matching (last resort)
+          'button[aria-label*="Reject" i]',
+          'button[aria-label*="Decline" i]',
+          'button[aria-label*="Deny" i]',
+          'button[aria-label*="necessary only" i]',
         ];
 
         for (const selector of rejectPatterns) {
           const btn = document.querySelector(selector);
           if (btn && isVisible(btn)) {
+            console.log('[Auto Cookie Reject] Clicking generic button via selector');
             btn.click();
             return true;
           }
         }
 
-        // Try matching by button text
-        const buttons = document.querySelectorAll('button, a.button, a.btn, [role="button"]');
+        // Try matching by button text - expanded list
+        const buttons = document.querySelectorAll('button, a.button, a.btn, [role="button"], input[type="button"], input[type="submit"]');
         const rejectTexts = [
-          'reject all', 'reject', 'decline', 'deny', 'refuse',
-          'only necessary', 'necessary only', 'essential only',
-          'nur notwendige', 'ablehnen', 'refuser', 'rechazar'
+          'reject all', 'reject non-essential', 'reject cookies', 'reject',
+          'decline all', 'decline', 'deny all', 'deny', 'refuse',
+          'only necessary', 'necessary only', 'essential only', 'necessary cookies only',
+          'no thanks', 'no, thanks', 'not now', 'maybe later',
+          'nur notwendige', 'ablehnen', 'alle ablehnen',
+          'refuser', 'tout refuser',
+          'rechazar', 'rechazar todo'
         ];
 
         for (const btn of buttons) {
           const text = btn.textContent.toLowerCase().trim();
           if (rejectTexts.some(t => text.includes(t)) && isVisible(btn)) {
+            console.log('[Auto Cookie Reject] Clicking generic button via text:', text);
             btn.click();
             return true;
           }
