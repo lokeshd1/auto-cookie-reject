@@ -9,6 +9,9 @@
   // Check if extension is enabled for this domain
   let isEnabled = true;
 
+  // Track if we've already handled a banner on this page to prevent repeated attempts
+  let hasHandledBanner = false;
+
   // CMP-specific rejection handlers
   const CMP_HANDLERS = {
     // OneTrust
@@ -250,6 +253,7 @@
     // Generic fallback patterns
     generic: {
       detect: () => {
+        // Only match elements with explicit cookie/consent/gdpr/privacy in class or id
         const genericSelectors = [
           '[class*="cookie-banner"]',
           '[class*="cookie-consent"]',
@@ -270,26 +274,19 @@
           '[class*="consent-modal"]',
           '[class*="privacy-banner"]',
           '[class*="privacy-notice"]',
-          '[aria-label*="cookie"]',
-          '[aria-label*="consent"]',
-          '[role="dialog"][aria-modal="true"]'
+          '[aria-label*="cookie" i]',
+          '[aria-label*="consent" i]'
         ];
         const found = document.querySelector(genericSelectors.join(', '));
-        if (found) return found;
 
-        // Check for any element containing cookie consent text
-        const allText = document.body?.innerText?.toLowerCase() || '';
-        if (allText.includes('cookie') &&
-            (allText.includes('accept') || allText.includes('reject') || allText.includes('consent'))) {
-          // Look for visible buttons with reject text
-          const buttons = document.querySelectorAll('button, a.button, a.btn, [role="button"]');
-          for (const btn of buttons) {
-            const text = btn.textContent.toLowerCase();
-            if (text.includes('reject') && isVisible(btn)) {
-              return btn.closest('div, section, aside, [role="dialog"]') || btn;
-            }
+        // Verify the found element actually contains cookie-related text
+        if (found) {
+          const text = found.innerText?.toLowerCase() || '';
+          if (text.includes('cookie') || text.includes('consent') || text.includes('gdpr') || text.includes('privacy')) {
+            return found;
           }
         }
+
         return null;
       },
       reject: () => {
@@ -390,6 +387,9 @@
   function handleCookieConsent() {
     if (!isEnabled) return;
 
+    // Don't keep trying if we've already handled a banner on this page
+    if (hasHandledBanner) return;
+
     let handled = false;
 
     // Try each CMP handler
@@ -401,6 +401,7 @@
         setTimeout(() => {
           if (handler.reject()) {
             console.log(`[Auto Cookie Reject] Rejected: ${name}`);
+            hasHandledBanner = true; // Prevent further attempts
             fixScrollBlocking();
           }
         }, 100);
