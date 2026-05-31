@@ -109,18 +109,43 @@
     },
 
     // Sourcepoint (used by The Guardian, etc.)
+    // Script runs in iframes too (all_frames: true), so detect if we're inside SP iframe
     sourcepoint: {
-      detect: () => document.querySelector('[id^="sp_message_container"]'),
+      detect: () => {
+        // Check if we're in main doc with SP container OR inside SP iframe
+        const inMainDoc = document.querySelector('[id^="sp_message_container"]');
+        const inIframe = window.self !== window.top &&
+                        document.querySelector('button[title="No, thank you"], button[title="Reject"]');
+        return inMainDoc || inIframe;
+      },
       reject: () => {
-        // Look for "No, thank you" or similar reject buttons
+        // Find reject button by title or text content
+        const rejectSelectors = [
+          'button[title="No, thank you"]',
+          'button[title="Reject"]',
+          'button[title="Decline"]',
+          'button[title="Do not consent"]'
+        ];
+
+        for (const selector of rejectSelectors) {
+          const btn = document.querySelector(selector);
+          if (btn) {
+            btn.click();
+            console.log('[Auto Cookie Reject] Clicked Sourcepoint reject button');
+            return true;
+          }
+        }
+
+        // Fallback: search by text content
         const buttons = document.querySelectorAll('button');
         for (const btn of buttons) {
           const text = btn.textContent.toLowerCase().trim();
-          if (text.includes('no, thank') ||
-              text.includes('reject') ||
-              text.includes('decline') ||
-              text.includes('do not accept')) {
+          if (text === 'no, thank you' ||
+              text === 'reject' ||
+              text === 'reject all' ||
+              text === 'decline') {
             btn.click();
+            console.log('[Auto Cookie Reject] Clicked reject button by text');
             return true;
           }
         }
