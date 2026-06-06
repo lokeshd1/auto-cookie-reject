@@ -21,20 +21,9 @@ Auto Cookie Reject automatically handles cookie consent popups so you don't have
 - Tracks how many banners you've avoided
 - 100% local - no data sent anywhere
 
-**Supported Cookie Platforms:**
+**Wide Compatibility:**
 
-- OneTrust (used by Salesforce, BBC, and thousands more)
-- Cookiebot
-- TrustArc
-- Quantcast Choice
-- Didomi
-- Sourcepoint
-- Osano
-- Usercentrics
-- Complianz (WordPress)
-- Iubenda
-- Klaro
-- Generic cookie banners
+Works with 11+ cookie consent platforms used across the web, including those deployed by major news sites, e-commerce stores, and enterprise software. Also handles generic banners that don't use a named platform.
 
 **Privacy First:**
 
