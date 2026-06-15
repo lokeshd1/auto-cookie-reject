@@ -12,6 +12,10 @@
   // Track if we've already handled a banner on this page to prevent repeated attempts
   let hasHandledBanner = false;
 
+  // The cookie-banner container matched by the generic detector, so the generic
+  // rejecter can scope its search to it instead of the whole document.
+  let genericContainer = null;
+
   // CMP-specific rejection handlers
   const CMP_HANDLERS = {
     // OneTrust
@@ -283,10 +287,12 @@
         if (found) {
           const text = found.innerText?.toLowerCase() || '';
           if (text.includes('cookie') || text.includes('consent') || text.includes('gdpr') || text.includes('privacy')) {
+            genericContainer = found;
             return found;
           }
         }
 
+        genericContainer = null;
         return null;
       },
       reject: () => {
@@ -312,9 +318,20 @@
           'button[aria-label*="necessary only" i]',
         ];
 
+        // Scope the search to the detected cookie-banner container. Searching the
+        // whole document risks clicking an unrelated "decline"/"no thanks" button
+        // (e.g. a newsletter modal). Fall back to the document only if we have no
+        // container reference.
+        const root = genericContainer && genericContainer.querySelector ? genericContainer : document;
+
+        // Note: we intentionally do NOT gate clicks on isVisible() here. The
+        // banner has already been confirmed as cookie-related by detect(), and
+        // styles.css hides it with `display:none`, which would make every button
+        // fail an isVisible() check. A programmatic .click() still dispatches on
+        // hidden / pointer-events:none elements, so the rejection is registered.
         for (const selector of rejectPatterns) {
-          const btn = document.querySelector(selector);
-          if (btn && isVisible(btn)) {
+          const btn = root.querySelector(selector);
+          if (btn) {
             console.log('[Auto Cookie Reject] Clicking generic button via selector');
             btn.click();
             return true;
@@ -323,7 +340,7 @@
 
         // Try matching by button text - expanded list
         // Include plain <a> tags since many consent UIs use links for reject
-        const buttons = document.querySelectorAll('button, a, [role="button"], input[type="button"], input[type="submit"], span[onclick], div[onclick]');
+        const buttons = root.querySelectorAll('button, a, [role="button"], input[type="button"], input[type="submit"], span[onclick], div[onclick]');
         const rejectTexts = [
           'reject all', 'reject non-essential', 'reject cookies', 'reject',
           'decline all', 'decline', 'deny all', 'deny', 'refuse',
@@ -336,7 +353,7 @@
 
         for (const btn of buttons) {
           const text = btn.textContent.toLowerCase().trim();
-          if (rejectTexts.some(t => text.includes(t)) && isVisible(btn)) {
+          if (rejectTexts.some(t => text.includes(t))) {
             btn.click();
             return true;
           }
@@ -346,6 +363,20 @@
       }
     }
   };
+
+  // Notify the background worker so it can update the blocked-banner stats.
+  function reportBlocked() {
+    try {
+      if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.sendMessage) {
+        chrome.runtime.sendMessage({
+          type: 'BANNER_BLOCKED',
+          domain: window.location.hostname
+        });
+      }
+    } catch (e) {
+      // Service worker may be asleep or context invalidated; stats are best-effort.
+    }
+  }
 
   // Check if element is visible
   function isVisible(el) {
@@ -403,6 +434,7 @@
             console.log(`[Auto Cookie Reject] Rejected: ${name}`);
             hasHandledBanner = true; // Prevent further attempts
             fixScrollBlocking();
+            reportBlocked();
           }
         }, 100);
 
